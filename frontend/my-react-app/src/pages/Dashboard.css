@@ -1,0 +1,129 @@
+.dashboard {
+  padding: 30px;
+  background: linear-gradient(120deg,#eef2ff,#f8fafc);
+  min-height: 100vh;
+  font-family: "Segoe UI", sans-serif;
+}
+
+.center {
+  text-align: center;
+}
+
+/* HEADER */
+.header {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.header h1 {
+  color: #4f46e5;
+  margin-bottom: 5px;
+}
+
+/* PROFILE */
+.profile-card {
+  background: white;
+  border-radius: 14px;
+  padding: 20px;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.06);
+  margin-bottom: 30px;
+}
+
+.profile-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit,minmax(180px,1fr));
+  gap: 15px;
+  margin-top: 15px;
+}
+
+.profile-grid div {
+  background: #f1f5ff;
+  padding: 12px;
+  border-radius: 10px;
+}
+
+.profile-grid span {
+  display: block;
+  font-size: 12px;
+  color: #6b7280;
+}
+
+/* VISITORS */
+.visitor-title {
+  margin-bottom: 15px;
+}
+
+.visitor-list {
+  display: grid;
+  gap: 15px;
+}
+
+.visitor-card {
+  background: white;
+  border-radius: 14px;
+  padding: 18px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.07);
+  transition: 0.25s;
+}
+
+.visitor-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 16px 32px rgba(0,0,0,0.08);
+}
+
+.visitor-main h3 {
+  margin: 0;
+  color: #111827;
+}
+
+.purpose {
+  margin: 10px 0;
+  color: #374151;
+}
+
+.visitor-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* STATUS BADGES */
+.status {
+  padding: 5px 12px;
+  border-radius: 20px;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.pending {
+  background: #fff7ed;
+  color: #ea580c;
+}
+
+.success {
+  background: #ecfdf5;
+  color: #059669;
+}
+
+/* BUTTON */
+button {
+  background: linear-gradient(90deg,#4f46e5,#6366f1);
+  color: white;
+  border: none;
+  padding: 7px 16px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+button:hover {
+  opacity: 0.9;
+}
+
+.empty-box {
+  background: white;
+  padding: 25px;
+  text-align: center;
+  border-radius: 12px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+}

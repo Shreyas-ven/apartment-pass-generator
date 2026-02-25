@@ -6,9 +6,10 @@ import uuid
 import random
 import string
 from bson.objectid import ObjectId
+from datetime import datetime
 
 app = Flask(__name__)
-CORS(app)
+CORS(app, resources={r"/*": {"origins": "*"}}, supports_credentials=True)
 
 # ---------- GENERATE APARTMENT ID ----------
 def generate_apartment_id():
@@ -80,6 +81,7 @@ def visitor_login():
         "block": data["block"],
         "room": data["room"],
         "purpose": data["purpose"],
+        "visit_date": data.get("visit_date") or datetime.now().strftime("%Y-%m-%d"),
         "pass_key": pass_key,
         "apartment_id": data["apartment_id"],
         "status": "Pending"
@@ -105,7 +107,8 @@ def visitor_status(pass_key):
         "block": visitor["block"],
         "room": visitor["room"],
         "purpose": visitor["purpose"],
-        "status": visitor["status"]
+        "status": visitor["status"],
+        "visit_date": visitor.get("visit_date")
     })
 
 # ---------- APPROVE VISITOR ----------
@@ -130,6 +133,7 @@ def get_visitors_by_apartment(apartment_id):
             "block": v.get("block"),
             "room": v.get("room"),
             "purpose": v.get("purpose"),
+            "visit_date": v.get("visit_date"),
             "pass_key": v.get("pass_key"),
             "apartment_id": v.get("apartment_id"),
             "status": v.get("status")
@@ -150,6 +154,18 @@ def get_apartment(apartment_id):
         "apartment_id": apartment["apartment_id"]
     })
 
+@app.route("/visitor/reject/<id>", methods=["PUT"])
+def reject_visitor(id):
+    visitors_collection.update_one(
+        {"_id": ObjectId(id)},
+        {"$set": {"status": "Rejected"}}
+    )
+    return jsonify({"message": "Visitor rejected"})
+
+@app.route("/visitor/delete/<id>", methods=["DELETE"])
+def delete_visitor(id):
+    visitors_collection.delete_one({"_id": ObjectId(id)})
+    return jsonify({"message": "Visitor deleted"})
 
 if __name__ == "__main__":
     app.run(debug=True)

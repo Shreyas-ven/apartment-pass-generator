@@ -6,31 +6,52 @@ export default function Home() {
 
   return (
     <div className="home-container">
-      <div className="home-card">
-        <h1>Apartment Visitor Management</h1>
-        <p className="subtitle">Secure • Simple • Smart</p>
+      <div className="home-background"></div>
+      <div className="home-overlay"></div>
 
-        <button
-          className="btn primary"
-          onClick={() => navigate("/apartment/register")}
-        >
-          Apartment Registration
-        </button>
+      <header className="home-header">
+        <div className="header-title">
+          Apartment Visitor System
+        </div>
 
-        <button
-          className="btn secondary"
-          onClick={() => navigate("/apartment/login")}
-        >
-          Apartment Login
-        </button>
+        <div className="header-menu">
+          <span onClick={() => navigate("/")}>Home</span>
+          <span onClick={() => navigate("/contact")}>Contact</span>
+          <span onClick={() => navigate("/terms")}>Terms & Conditions</span>
+        </div>
+      </header>
 
-        <button
-          className="btn visitor"
-          onClick={() => navigate("/visitor/login")}
-        >
-          Visitor Entry
-        </button>
+      <div className="home-content">
+        <div className="home-card">
+          <h1>Apartment Visitor Management</h1>
+          <p className="subtitle">Secure • Simple • Smart</p>
+
+          <button
+            className="btn primary"
+            onClick={() => navigate("/apartment/register")}
+          >
+            Apartment Registration
+          </button>
+
+          <button
+            className="btn secondary"
+            onClick={() => navigate("/apartment/login")}
+          >
+            Apartment Login
+          </button>
+
+          <button
+            className="btn visitor"
+            onClick={() => navigate("/visitor/login")}
+          >
+            Visitor Entry
+          </button>
+        </div>
       </div>
+
+      <footer className="home-footer">
+        © 2026 Apartment Security • All Rights Reserved
+      </footer>
     </div>
   );
 }

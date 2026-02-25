@@ -1,0 +1,29 @@
+.terms-container {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #7985b6;
+  padding: 40px 20px;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.terms-card {
+  max-width: 800px;
+  background: white;
+  padding: 40px;
+  border-radius: 14px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+}
+
+.terms-card h1 {
+  margin-bottom: 20px;
+  color: #333;
+}
+
+.terms-card p {
+  color: #555;
+  line-height: 1.6;
+  margin-bottom: 16px;
+  font-size: 14.5px;
+}

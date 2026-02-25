@@ -1,24 +1,97 @@
 .home-container {
   min-height: 100vh;
-  background: linear-gradient(135deg, #667eea, #764ba2);
+  position: relative;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Blurred Background Image */
+.home-background {
+  position: fixed;
+  inset: 0;
+  background-image: url("/images/apartment-bg.webp");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  filter: blur(5px);          /* <-- increase blur */
+  transform: scale(1.1);      /* avoids blur edges */
+  z-index: -2;
+}
+
+/* Dark Overlay ABOVE Blur */
+.home-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.35);
+  z-index: -1;
+}
+
+/* HEADER */
+.home-header {
+  height: 70px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 40px;
+  color: white;
+
+  background: rgba(0, 0, 0, 0.35);
+  backdrop-filter: blur(6px);
+}
+
+/* Project Title */
+.header-title {
+  font-size: 20px;
+  font-weight: 600;
+}
+
+/* Menu */
+.header-menu {
+  display: flex;
+  gap: 30px;
+  font-size: 14px;
+}
+
+.header-menu span {
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.header-menu span:hover {
+  opacity: 0.7;
+}
+
+/* MAIN CONTENT */
+.home-content {
+  flex: 1;
   display: flex;
   justify-content: center;
   align-items: center;
-  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 }
 
+/* Card */
 .home-card {
   background: white;
   padding: 40px;
   width: 360px;
   border-radius: 14px;
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
   text-align: center;
 }
 
-.home-card h1 {
-  margin-bottom: 8px;
-  color: #333;
+/* FOOTER */
+.home-footer {
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 13px;
+
+  background: rgba(0, 0, 0, 0.35);
+  backdrop-filter: blur(6px);
 }
 
 .subtitle {

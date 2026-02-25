@@ -48,3 +48,13 @@ export const getApartment = async (id) => {
   const res = await fetch(`${API}/apartment/${id}`);
   return res.json();
 };
+
+export const rejectVisitor = async (id) => {
+  const res = await fetch(`${API}/visitor/reject/${id}`, { method: "PUT" });
+  return res.json();
+};
+
+export const deleteVisitor = async (id) => {
+  const res = await fetch(`${API}/visitor/delete/${id}`, { method: "DELETE" });
+  return res.json();
+};

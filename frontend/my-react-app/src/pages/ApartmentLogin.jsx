@@ -1,34 +1,57 @@
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";   // ✅ added
+import { useNavigate } from "react-router-dom";
 import { apartmentLogin } from "../services/api";
 import "./Form.css";
 
 export default function ApartmentLogin() {
-  const [form, setForm] = useState({});
-  const navigate = useNavigate();   // ✅ added
+  const [form, setForm] = useState({
+    email: "",
+    password: ""
+  });
+
+  const navigate = useNavigate();
 
   const submit = async () => {
-  const res = await apartmentLogin(form);
+    if (!form.email || !form.password) {
+      alert("Please enter email and password");
+      return;
+    }
 
-  alert(res.message || res.error);
+    const res = await apartmentLogin(form);
 
-  if (res && !res.error) {
+    alert(res.message || res.error);
 
-    // ✅ extract apartment id from response
-    const apartmentId = res.apartment.apartment_id;
-
-    // ✅ redirect WITH id in URL
-    navigate(`/dashboard/${apartmentId}`);
-  }
-};
+    if (res && !res.error) {
+      const apartmentId = res.apartment.apartment_id;
+      navigate(`/dashboard/${apartmentId}`);
+    }
+  };
 
   return (
-    <div className="form-container">
+    <div
+      className="form-container"
+      style={{ backgroundImage: "url(/login-images.jpg)" }}
+    >
+      {/* ✅ Header */}
+      <header className="login-header">
+        <div className="logo">Apartment Pass Generator</div>
+
+        <div className="header-right">
+          <span>New User?</span>
+          <button onClick={() => navigate("/apartment/register")}>
+            Register
+          </button>
+        </div>
+      </header>
+
+      <div className="form-overlay"></div>
+
       <div className="form-card">
         <h2>Apartment Login</h2>
 
         <input
           placeholder="Email"
+          value={form.email}
           onChange={(e) =>
             setForm({ ...form, email: e.target.value })
           }
@@ -37,6 +60,7 @@ export default function ApartmentLogin() {
         <input
           type="password"
           placeholder="Password"
+          value={form.password}
           onChange={(e) =>
             setForm({ ...form, password: e.target.value })
           }

@@ -1,8 +1,11 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";   // ✅ ADD THIS
 import { apartmentRegister } from "../services/api";
 import "./Form.css";
 
 export default function ApartmentRegister() {
+  const navigate = useNavigate();   // ✅ ADD THIS
+
   const initialState = {
     apartment_name: "",
     email: "",
@@ -20,14 +23,32 @@ export default function ApartmentRegister() {
 
     alert(res.message || res.error);
 
-    // Clear fields only on success
     if (res.message) {
       setForm(initialState);
     }
   };
 
   return (
-    <div className="form-container">
+    <div
+      className="form-container"
+      style={{ backgroundImage: "url(/login-images.jpg)" }}   // ✅ SAME IMAGE
+    >
+      {/* ✅ Header */}
+      <header className="login-header">
+        <div className="logo">Apartment Pass Generator</div>
+
+        <div className="header-right">
+          <span>Already Registered?</span>
+          <button onClick={() => navigate("/apartment/login")}>
+            Login
+          </button>
+        </div>
+      </header>
+
+      {/* ✅ Blur + Dark Overlay */}
+      <div className="form-overlay"></div>
+
+      {/* ✅ Card */}
       <div className="form-card">
         <h2>Apartment Registration</h2>
 
